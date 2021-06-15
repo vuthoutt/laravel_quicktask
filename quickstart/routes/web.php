@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TaskController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-
+Route::resource('task', TaskController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
