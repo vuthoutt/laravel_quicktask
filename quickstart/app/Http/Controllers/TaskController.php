@@ -23,8 +23,7 @@ class TaskController extends Controller
     {
         $tasks = Task::orderBy('created_at', 'asc')->get();
 
-        return view('tasks.index', compact('tasks')
-        );
+        return view('tasks.index',compact('tasks'));
     }
 
     /**
@@ -32,7 +31,7 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         return view('tasks.create');
     }
@@ -54,7 +53,7 @@ class TaskController extends Controller
 
         $task->save();
 
-        return redirect()->route('task.index')->with('success','Task created successfully.');
+        return redirect()->route('tasks.index')->with('success', __('task.created'));
     }
 
     /**
@@ -94,7 +93,7 @@ class TaskController extends Controller
 
         $task->update($request->all());
 
-        return redirect()->route('task.index')->with('success','tasks updated successfully');
+        return redirect()->route('tasks.index')->with('success', __('task.updated'));
     }
 
     /**
@@ -107,7 +106,6 @@ class TaskController extends Controller
     {
         $task->delete();
 
-        return redirect()->route('task.index')
-                        ->with('success','task deleted successfully');
+        return redirect()->route('tasks.index')->with('success', __('task.deleted'));
     }
 }

@@ -4,10 +4,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit task</h2>
+                <h2>{{ __('messages.edit') }}</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('task.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('tasks.index') }}"> {{ __('messages.back') }}</a>
             </div>
         </div>
     </div>
@@ -22,21 +22,21 @@
         </div>
     @endif
 
-    <form action="{{ route('task.update',$task->id) }}" method="POST">
+    <form action="{{ route('tasks.update',$task->id) }}" method="POST">
         @csrf
 
         @method('PUT')
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
-                    <strong>name:</strong>
+                    <strong>{{ __('messages.name') }}:</strong>
                     <input type="text" name="name" value="{{ $task->name }}" class="form-control" placeholder="Title">
                 </div>
             </div>
 
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">{{ __('messages.submit') }}</button>
             </div>
         </div>
     </form>
