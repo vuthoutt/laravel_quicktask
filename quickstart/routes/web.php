@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 /*
@@ -12,8 +13,13 @@ use App\Http\Controllers\TaskController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => 'localization'], function () {
+
+Route::resource('tasks', TaskController::class);
 
 
 Auth::routes();
-Route::resource('task', TaskController::class);
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('change-language/{language}',[HomeController::class, 'changeLanguage'])->name('change-language');
+});
