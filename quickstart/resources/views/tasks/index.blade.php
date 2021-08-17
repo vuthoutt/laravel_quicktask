@@ -13,10 +13,9 @@
     </div>
 
     @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
+    <x-alert type="success" :message="$message" class="mb-4"/>
     @endif
+
 
     <table class="table table-bordered">
         <tr>
